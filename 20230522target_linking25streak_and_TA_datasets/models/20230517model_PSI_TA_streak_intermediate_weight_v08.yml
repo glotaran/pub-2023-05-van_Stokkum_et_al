@@ -1,0 +1,2154 @@
+# Migrated from pyglotaran v0.7 for v0.8 staging validation.
+library:
+  complexFRL:
+    type: kinetic
+    rates:
+      (sBulk, sRed1): rates.ToBulkFromRed1
+      (sRed1, sBulk): rates.ToRed1FromBulk
+      (sBulk, sRed2): rates.ToBulkFromRed2
+      (sRed2, sBulk): rates.ToRed2FromBulk
+      (sRed1, sRed1): rates.kF
+      (sRed2, sRed2): rates.kF
+      (sBulk, sFRLRC): rates.ToBulkFromFRLRC
+      (sFRLRC, sBulk): rates.ToFRLRCFromBulk
+      (sFRLRC, sFRLRP1): rates.ToFRLRCFromFRLRP1
+      (sFRLRP1, sFRLRC): rates.ToFRLRP1FromFRLRC
+      (sChlf1, sBulk): rates.ToChlf1FromBulk
+      (sBulk, sChlf1): rates.ToBulkFromChlf1
+      (sChlf2, sChlf1): rates.ToChlf2FromChlf1
+      (sChlf1, sChlf2): rates.ToChlf1FromChlf2
+      (sChlf2, sBulk): rates.ToChlf2FromBulk
+      (sBulk, sChlf2): rates.ToBulkFromChlf2
+      (sChlf2, sFRLRC): rates.ToChlf2FromFRLRC
+      (sFRLRC, sChlf2): rates.ToFRLRCFromChlf2
+      (sChlf1, sFRLRC): rates.ToChlf1FromFRLRC
+      (sFRLRC, sChlf1): rates.ToFRLRCFromChlf1
+      (sChlf1, sChlf1): rates.kF
+      (sChlf2, sChlf2): rates.kF
+      (sFRLRP1, sFRLRP1): rates.FRLRP1
+      (sBulk, sBulk): rates.kF
+    clp_constraints:
+    - type: zero
+      target: sRed2
+      interval:
+      - - 100
+        - 683
+    - type: zero
+      target: sFRLRC
+      interval:
+      - - 100
+        - 702
+    - type: zero
+      target: sFRLRP1
+      interval:
+      - - 100
+        - 1000
+    - type: zero
+      target: sChlf1
+      interval:
+      - - 100
+        - 700
+    - type: zero
+      target: sChlf2
+      interval:
+      - - 100
+        - 720
+  freeChla:
+    type: kinetic
+    rates:
+      (freeChla, freeChla): rates.kF
+  freeChla2:
+    type: kinetic
+    rates:
+      (freeChla2, freeChla2): rates.kFa2
+  freeChlf:
+    type: kinetic
+    rates:
+      (freeChlf, freeChlf): rates.kFf
+    clp_constraints:
+    - type: zero
+      target: freeChlf
+      interval:
+      - - 100
+        - 700
+  complexWL:
+    type: kinetic
+    rates:
+      (sBulk, sRed1): xrates.ToBulkFromRed1
+      (sRed1, sBulk): rates.ToRed1FromBulk
+      (sBulk, sRed2): xrates.ToBulkFromRed2
+      (sRed2, sBulk): rates.ToRed2FromBulk
+      (sRed1, sRed1): rates.kF
+      (sRed2, sRed2): rates.kF
+      (sWLRC, sWLRP1): rates.ToWLRCFromWLRP1
+      (sWLRP1, sWLRC): rates.ToWLRP1FromWLRC
+      (sBulk, sWLRC): rates.ToBulkFromWLRC
+      (sWLRC, sBulk): rates.ToWLRCFromBulk
+      (sWLRP1, sWLRP1): rates.WLRP1
+      (sBulk, sBulk): rates.kF
+    clp_constraints:
+    - type: zero
+      target: sRed2
+      interval:
+      - - 100
+        - 683
+    - type: zero
+      target: sWLRC
+      interval:
+      - - 100
+        - 658
+    - type: zero
+      target: sWLRP1
+      interval:
+      - - 100
+        - 1000
+  CF9212complexFRL:
+    type: kinetic
+    rates:
+      (CF9212Bulk, CF9212Red1): CF9212rates.ToBulkFromRed1
+      (CF9212Red1, CF9212Bulk): CF9212rates.ToRed1FromBulk
+      (CF9212Bulk, CF9212Red2): CF9212rates.ToBulkFromRed2
+      (CF9212Red2, CF9212Bulk): CF9212rates.ToRed2FromBulk
+      (CF9212Red1, CF9212Red1): CF9212rates.kF
+      (CF9212Red2, CF9212Red2): CF9212rates.kF
+      (CF9212Bulk, CF9212FRLRC): CF9212rates.ToBulkFromFRLRC
+      (CF9212FRLRC, CF9212Bulk): CF9212rates.ToFRLRCFromBulk
+      (CF9212FRLRC, CF9212FRLRP1): CF9212rates.ToFRLRCFromFRLRP1
+      (CF9212FRLRP1, CF9212FRLRC): CF9212rates.ToFRLRP1FromFRLRC
+      (CF9212Chlf1, CF9212Bulk): CF9212rates.ToChlf1FromBulk
+      (CF9212Bulk, CF9212Chlf1): CF9212rates.ToBulkFromChlf1
+      (CF9212Chlf2, CF9212Chlf1): CF9212rates.ToChlf2FromChlf1
+      (CF9212Chlf1, CF9212Chlf2): CF9212rates.ToChlf1FromChlf2
+      (CF9212Chlf2, CF9212Bulk): CF9212rates.ToChlf2FromBulk
+      (CF9212Bulk, CF9212Chlf2): CF9212rates.ToBulkFromChlf2
+      (CF9212Chlf2, CF9212FRLRC): CF9212rates.ToChlf2FromFRLRC
+      (CF9212FRLRC, CF9212Chlf2): CF9212rates.ToFRLRCFromChlf2
+      (CF9212Chlf1, CF9212FRLRC): CF9212rates.ToChlf1FromFRLRC
+      (CF9212FRLRC, CF9212Chlf1): CF9212rates.ToFRLRCFromChlf1
+      (CF9212Chlf1, CF9212Chlf1): CF9212rates.kF
+      (CF9212Chlf2, CF9212Chlf2): CF9212rates.kF
+      (CF9212FRLRP1, CF9212FRLRP1): CF9212rates.FRLRP1
+      (CF9212Bulk, CF9212Bulk): CF9212rates.kF
+    clp_constraints:
+    - type: zero
+      target: CF9212Red2
+      interval:
+      - - 100
+        - 683
+    - type: zero
+      target: CF9212FRLRC
+      interval:
+      - - 100
+        - 702
+    - type: zero
+      target: CF9212FRLRP1
+      interval:
+      - - 100
+        - 1000
+    - type: zero
+      target: CF9212Chlf1
+      interval:
+      - - 100
+        - 700
+    - type: zero
+      target: CF9212Chlf2
+      interval:
+      - - 100
+        - 720
+  CF9212freeChla:
+    type: kinetic
+    rates:
+      (CF9212freeChla, CF9212freeChla): CF9212rates.kF
+  CF9212freeChlf:
+    type: kinetic
+    rates:
+      (CF9212freeChlf, CF9212freeChlf): CF9212rates.kFf
+    clp_constraints:
+    - type: zero
+      target: CF9212freeChlf
+      interval:
+      - - 100
+        - 700
+  CF9212complexWL:
+    type: kinetic
+    rates:
+      (CF9212Bulk, CF9212Red1): xCF9212rates.ToBulkFromRed1
+      (CF9212Red1, CF9212Bulk): CF9212rates.ToRed1FromBulk
+      (CF9212Bulk, CF9212Red2): xCF9212rates.ToBulkFromRed2
+      (CF9212Red2, CF9212Bulk): CF9212rates.ToRed2FromBulk
+      (CF9212Red1, CF9212Red1): CF9212rates.kF
+      (CF9212Red2, CF9212Red2): CF9212rates.kF
+      (CF9212WLRC, CF9212WLRP1): CF9212rates.ToWLRCFromWLRP1
+      (CF9212WLRP1, CF9212WLRC): CF9212rates.ToWLRP1FromWLRC
+      (CF9212Bulk, CF9212WLRC): CF9212rates.ToBulkFromWLRC
+      (CF9212WLRC, CF9212Bulk): CF9212rates.ToWLRCFromBulk
+      (CF9212WLRP1, CF9212WLRP1): CF9212rates.WLRP1
+      (CF9212Bulk, CF9212Bulk): CF9212rates.kF
+    clp_constraints:
+    - type: zero
+      target: CF9212Red2
+      interval:
+      - - 100
+        - 683
+    - type: zero
+      target: CF9212WLRC
+      interval:
+      - - 100
+        - 658
+    - type: zero
+      target: CF9212WLRP1
+      interval:
+      - - 100
+        - 1000
+  CT7203complexFRL:
+    type: kinetic
+    rates:
+      (CT7203Bulk, CT7203Red1): CT7203rates.ToBulkFromRed1
+      (CT7203Red1, CT7203Bulk): CT7203rates.ToRed1FromBulk
+      (CT7203Bulk, CT7203Red2): CT7203rates.ToBulkFromRed2
+      (CT7203Red2, CT7203Bulk): CT7203rates.ToRed2FromBulk
+      (CT7203Red1, CT7203Red1): CT7203rates.kF
+      (CT7203Red2, CT7203Red2): CT7203rates.kF
+      (CT7203Bulk, CT7203FRLRC): CT7203rates.ToBulkFromFRLRC
+      (CT7203FRLRC, CT7203Bulk): CT7203rates.ToFRLRCFromBulk
+      (CT7203FRLRC, CT7203FRLRP1): CT7203rates.ToFRLRCFromFRLRP1
+      (CT7203FRLRP1, CT7203FRLRC): CT7203rates.ToFRLRP1FromFRLRC
+      (CT7203Chlf1, CT7203Bulk): CT7203rates.ToChlf1FromBulk
+      (CT7203Bulk, CT7203Chlf1): CT7203rates.ToBulkFromChlf1
+      (CT7203Chlf2, CT7203Chlf1): CT7203rates.ToChlf2FromChlf1
+      (CT7203Chlf1, CT7203Chlf2): CT7203rates.ToChlf1FromChlf2
+      (CT7203Chlf2, CT7203Bulk): CT7203rates.ToChlf2FromBulk
+      (CT7203Bulk, CT7203Chlf2): CT7203rates.ToBulkFromChlf2
+      (CT7203Chlf2, CT7203FRLRC): CT7203rates.ToChlf2FromFRLRC
+      (CT7203FRLRC, CT7203Chlf2): CT7203rates.ToFRLRCFromChlf2
+      (CT7203Chlf1, CT7203FRLRC): CT7203rates.ToChlf1FromFRLRC
+      (CT7203FRLRC, CT7203Chlf1): CT7203rates.ToFRLRCFromChlf1
+      (CT7203Chlf1, CT7203Chlf1): CT7203rates.kF
+      (CT7203Chlf2, CT7203Chlf2): CT7203rates.kF
+      (CT7203FRLRP1, CT7203FRLRP1): CT7203rates.FRLRP1
+      (CT7203Bulk, CT7203Bulk): CT7203rates.kF
+    clp_constraints:
+    - type: zero
+      target: CT7203Red2
+      interval:
+      - - 100
+        - 683
+    - type: zero
+      target: CT7203Chlf1
+      interval:
+      - - 100
+        - 700
+    - type: zero
+      target: CT7203FRLRC
+      interval:
+      - - 100
+        - 702
+    - type: zero
+      target: CT7203FRLRP1
+      interval:
+      - - 100
+        - 1000
+    - type: zero
+      target: CT7203Chlf2
+      interval:
+      - - 100
+        - 720
+  CT7203freeChla:
+    type: kinetic
+    rates:
+      (CT7203freeChla, CT7203freeChla): CT7203rates.kF
+  CT7203freeChla2:
+    type: kinetic
+    rates:
+      (CT7203freeChla2, CT7203freeChla2): CT7203rates.kFa2
+  CT7203freeChlf:
+    type: kinetic
+    rates:
+      (CT7203freeChlf, CT7203freeChlf): CT7203rates.kFf
+    clp_constraints:
+    - type: zero
+      target: CT7203freeChlf
+      interval:
+      - - 100
+        - 700
+  CT7203complexWL:
+    type: kinetic
+    rates:
+      (CT7203Bulk, CT7203Red1): xCT7203rates.ToBulkFromRed1
+      (CT7203Red1, CT7203Bulk): CT7203rates.ToRed1FromBulk
+      (CT7203Bulk, CT7203Red2): xCT7203rates.ToBulkFromRed2
+      (CT7203Red2, CT7203Bulk): CT7203rates.ToRed2FromBulk
+      (CT7203Red1, CT7203Red1): CT7203rates.kF
+      (CT7203Red2, CT7203Red2): CT7203rates.kF
+      (CT7203WLRC, CT7203WLRP1): CT7203rates.ToWLRCFromWLRP1
+      (CT7203WLRP1, CT7203WLRC): CT7203rates.ToWLRP1FromWLRC
+      (CT7203Bulk, CT7203WLRC): CT7203rates.ToBulkFromWLRC
+      (CT7203WLRC, CT7203Bulk): CT7203rates.ToWLRCFromBulk
+      (CT7203WLRP1, CT7203WLRP1): CT7203rates.WLRP1
+      (CT7203Bulk, CT7203Bulk): CT7203rates.kF
+    clp_constraints:
+    - type: zero
+      target: CT7203Red2
+      interval:
+      - - 100
+        - 683
+    - type: zero
+      target: CT7203WLRC
+      interval:
+      - - 100
+        - 658
+    - type: zero
+      target: CT7203WLRP1
+      interval:
+      - - 100
+        - 1000
+  Syn7335complexFRL:
+    type: kinetic
+    rates:
+      (Syn7335Bulk, Syn7335Red1): Syn7335rates.ToBulkFromRed1
+      (Syn7335Red1, Syn7335Bulk): Syn7335rates.ToRed1FromBulk
+      (Syn7335Bulk, Syn7335Red2): Syn7335rates.ToBulkFromRed2
+      (Syn7335Red2, Syn7335Bulk): Syn7335rates.ToRed2FromBulk
+      (Syn7335Red1, Syn7335Red1): Syn7335rates.kF
+      (Syn7335Red2, Syn7335Red2): Syn7335rates.kF
+      (Syn7335Bulk, Syn7335FRLRC): Syn7335rates.ToBulkFromFRLRC
+      (Syn7335FRLRC, Syn7335Bulk): Syn7335rates.ToFRLRCFromBulk
+      (Syn7335FRLRC, Syn7335FRLRP1): Syn7335rates.ToFRLRCFromFRLRP1
+      (Syn7335FRLRP1, Syn7335FRLRC): Syn7335rates.ToFRLRP1FromFRLRC
+      (Syn7335Chlf1, Syn7335Bulk): Syn7335rates.ToChlf1FromBulk
+      (Syn7335Bulk, Syn7335Chlf1): Syn7335rates.ToBulkFromChlf1
+      (Syn7335Chlf2, Syn7335Chlf1): Syn7335rates.ToChlf2FromChlf1
+      (Syn7335Chlf1, Syn7335Chlf2): Syn7335rates.ToChlf1FromChlf2
+      (Syn7335Chlf2, Syn7335Bulk): Syn7335rates.ToChlf2FromBulk
+      (Syn7335Bulk, Syn7335Chlf2): Syn7335rates.ToBulkFromChlf2
+      (Syn7335Chlf2, Syn7335FRLRC): Syn7335rates.ToChlf2FromFRLRC
+      (Syn7335FRLRC, Syn7335Chlf2): Syn7335rates.ToFRLRCFromChlf2
+      (Syn7335Chlf1, Syn7335FRLRC): Syn7335rates.ToChlf1FromFRLRC
+      (Syn7335FRLRC, Syn7335Chlf1): Syn7335rates.ToFRLRCFromChlf1
+      (Syn7335Chlf1, Syn7335Chlf1): Syn7335rates.kF
+      (Syn7335Chlf2, Syn7335Chlf2): Syn7335rates.kF
+      (Syn7335FRLRP1, Syn7335FRLRP1): Syn7335rates.FRLRP1
+      (Syn7335Bulk, Syn7335Bulk): Syn7335rates.kF
+    clp_constraints:
+    - type: zero
+      target: Syn7335Red2
+      interval:
+      - - 100
+        - 683
+    - type: zero
+      target: Syn7335FRLRC
+      interval:
+      - - 100
+        - 683
+    - type: zero
+      target: Syn7335FRLRP1
+      interval:
+      - - 100
+        - 1000
+    - type: zero
+      target: Syn7335Chlf1
+      interval:
+      - - 100
+        - 700
+    - type: zero
+      target: Syn7335Chlf2
+      interval:
+      - - 100
+        - 720
+  Syn7335freeChla:
+    type: kinetic
+    rates:
+      (Syn7335freeChla, Syn7335freeChla): Syn7335rates.kF
+  Syn7335freeChlf:
+    type: kinetic
+    rates:
+      (Syn7335freeChlf, Syn7335freeChlf): Syn7335rates.kFf
+    clp_constraints:
+    - type: zero
+      target: Syn7335freeChlf
+      interval:
+      - - 100
+        - 700
+  Syn7335complexWL:
+    type: kinetic
+    rates:
+      (Syn7335Bulk, Syn7335Red1): xSyn7335rates.ToBulkFromRed1
+      (Syn7335Red1, Syn7335Bulk): Syn7335rates.ToRed1FromBulk
+      (Syn7335Bulk, Syn7335Red2): xSyn7335rates.ToBulkFromRed2
+      (Syn7335Red2, Syn7335Bulk): Syn7335rates.ToRed2FromBulk
+      (Syn7335Red1, Syn7335Red1): Syn7335rates.kF
+      (Syn7335Red2, Syn7335Red2): Syn7335rates.kF
+      (Syn7335WLRC, Syn7335WLRP1): Syn7335rates.ToWLRCFromWLRP1
+      (Syn7335WLRP1, Syn7335WLRC): Syn7335rates.ToWLRP1FromWLRC
+      (Syn7335Bulk, Syn7335WLRC): Syn7335rates.ToBulkFromWLRC
+      (Syn7335WLRC, Syn7335Bulk): Syn7335rates.ToWLRCFromBulk
+      (Syn7335WLRP1, Syn7335WLRP1): Syn7335rates.WLRP1
+      (Syn7335Bulk, Syn7335Bulk): Syn7335rates.kF
+    clp_constraints:
+    - type: zero
+      target: Syn7335Red2
+      interval:
+      - - 100
+        - 683
+    - type: zero
+      target: Syn7335WLRC
+      interval:
+      - - 100
+        - 658
+    - type: zero
+      target: Syn7335WLRP1
+      interval:
+      - - 100
+        - 1000
+  smc1:
+    type: clp-guide
+    target: sBulk
+    dimension: time
+  smc2:
+    type: clp-guide
+    target: sRed1
+    dimension: time
+  smc3:
+    type: clp-guide
+    target: sRed2
+    dimension: time
+    clp_constraints:
+    - type: zero
+      target: sRed2
+      interval:
+      - - 100
+        - 683
+  smc4:
+    type: clp-guide
+    target: sWLRC
+    dimension: time
+    clp_constraints:
+    - type: zero
+      target: sWLRC
+      interval:
+      - - 100
+        - 658
+  smc8:
+    type: clp-guide
+    target: sChlf1
+    dimension: time
+    clp_constraints:
+    - type: zero
+      target: sChlf1
+      interval:
+      - - 100
+        - 700
+  smc9:
+    type: clp-guide
+    target: sChlf2
+    dimension: time
+    clp_constraints:
+    - type: zero
+      target: sChlf2
+      interval:
+      - - 100
+        - 720
+  smc10:
+    type: clp-guide
+    target: sFRLRC
+    dimension: time
+    clp_constraints:
+    - type: zero
+      target: sFRLRC
+      interval:
+      - - 100
+        - 702
+  Syn7335smc10:
+    type: clp-guide
+    target: Syn7335FRLRC
+    dimension: time
+    clp_constraints:
+    - type: zero
+      target: Syn7335FRLRC
+      interval:
+      - - 100
+        - 683
+  smc12:
+    type: clp-guide
+    target: freeChlf
+    dimension: time
+    clp_constraints:
+    - type: zero
+      target: freeChlf
+      interval:
+      - - 100
+        - 700
+  complexFRL740:
+    type: kinetic
+    rates:
+      (Bulk, Ant1): rates.ToBulkFromAnt1
+      (Ant1, Bulk): rates.ToAnt1FromBulk
+      (Bulk, Red1): rates.ToBulkFromRed1
+      (Red1, Bulk): yrates.ToRed1FromBulk
+      (Bulk, Red2): rates.ToBulkFromRed2
+      (Red2, Bulk): yrates.ToRed2FromBulk
+      (Red1, Red1): rates.kF
+      (Red2, Red2): rates.kF
+      (Bulk, Bulk): rates.kF
+      (Bulk, FRLRC): yrates.ToBulkFromFRLRC
+      (FRLRC, Bulk): rates.ToFRLRCFromBulk
+      (Chlf1, Bulk): rates.ToChlf1FromBulk
+      (Bulk, Chlf1): yrates.ToBulkFromChlf1
+      (Chlf2, Chlf1): rates.ToChlf2FromChlf1
+      (Chlf1, Chlf2): yrates.ToChlf1FromChlf2
+      (Chlf2, Bulk): rates.ToChlf2FromBulk
+      (Bulk, Chlf2): yrates.ToBulkFromChlf2
+      (Chlf2, FRLRC): rates.ToChlf2FromFRLRC
+      (FRLRC, Chlf2): yrates.ToFRLRCFromChlf2
+      (Chlf1, FRLRC): rates.ToChlf1FromFRLRC
+      (FRLRC, Chlf1): yrates.ToFRLRCFromChlf1
+      (Chlf1, Chlf1): rates.kF
+      (Chlf2, Chlf2): rates.kF
+      (FRLRC, FRLRP1): yrates.ToFRLRCFromFRLRP1
+      (FRLRP1, FRLRC): yrates.ToFRLRP1FromFRLRC
+      (FRLRP2, FRLRP1): rates.ToFRLRP2FromFRLRP1
+      (FRLRP2, FRLRP2): rates.ToFRLRP2FromFRLRP2
+    clp_constraints:
+    - type: zero
+      target: Ant1
+      interval:
+      - - 700
+        - 715
+  complexFRL700:
+    type: kinetic
+    rates:
+      (Bulk, Ant1): rates.ToBulkFromAnt1
+      (Ant1, Bulk): rates.ToAnt1FromBulk
+      (Bulk, Red1): rates.ToBulkFromRed1
+      (Red1, Bulk): yrates.ToRed1FromBulk
+      (Bulk, Red2): rates.ToBulkFromRed2
+      (Red2, Bulk): yrates.ToRed2FromBulk
+      (Red1, Red1): rates.kF
+      (Red2, Red2): rates.kF
+      (Bulk, Bulk): rates.kF
+      (Bulk, FRLRC): yrates.ToBulkFromFRLRC
+      (FRLRC, Bulk): rates.ToFRLRCFromBulk
+      (Chlf1, Bulk): rates.ToChlf1FromBulk
+      (Bulk, Chlf1): yrates.ToBulkFromChlf1
+      (Chlf2, Chlf1): rates.ToChlf2FromChlf1
+      (Chlf1, Chlf2): yrates.ToChlf1FromChlf2
+      (Chlf2, Bulk): rates.ToChlf2FromBulk
+      (Bulk, Chlf2): yrates.ToBulkFromChlf2
+      (Chlf2, FRLRC): rates.ToChlf2FromFRLRC
+      (FRLRC, Chlf2): yrates.ToFRLRCFromChlf2
+      (Chlf1, FRLRC): rates.ToChlf1FromFRLRC
+      (FRLRC, Chlf1): yrates.ToFRLRCFromChlf1
+      (Chlf1, Chlf1): rates.kF
+      (Chlf2, Chlf2): rates.kF
+      (FRLRC, FRLRP1): yrates.ToFRLRCFromFRLRP1
+      (FRLRP1, FRLRC): yrates.ToFRLRP1FromFRLRC
+      (FRLRP2a, FRLRP1): rates.ToFRLRP2FromFRLRP1
+      (FRLRP2a, FRLRP2a): rates.ToFRLRP2FromFRLRP2
+    clp_constraints:
+    - type: zero
+      target: Ant1
+      interval:
+      - - 700
+        - 715
+  complexFRL670:
+    type: kinetic
+    rates:
+      (Bulk, Ant1): rates.ToBulkFromAnt1
+      (Ant1, Bulk): rates.ToAnt1FromBulk
+      (Bulk, Red1): rates.ToBulkFromRed1
+      (Red1, Bulk): yrates.ToRed1FromBulk
+      (Bulk, Red2): rates.ToBulkFromRed2
+      (Red2, Bulk): yrates.ToRed2FromBulk
+      (Red1, Red1): rates.kF
+      (Red2, Red2): rates.kF
+      (Bulk, Bulk): rates.kF
+      (Bulk, FRLRC): yrates.ToBulkFromFRLRC
+      (FRLRC, Bulk): rates.ToFRLRCFromBulk
+      (Chlf1, Bulk): rates.ToChlf1FromBulk
+      (Bulk, Chlf1): yrates.ToBulkFromChlf1
+      (Chlf2, Chlf1): rates.ToChlf2FromChlf1
+      (Chlf1, Chlf2): yrates.ToChlf1FromChlf2
+      (Chlf2, Bulk): rates.ToChlf2FromBulk
+      (Bulk, Chlf2): yrates.ToBulkFromChlf2
+      (Chlf2, FRLRC): rates.ToChlf2FromFRLRC
+      (FRLRC, Chlf2): yrates.ToFRLRCFromChlf2
+      (Chlf1, FRLRC): rates.ToChlf1FromFRLRC
+      (FRLRC, Chlf1): yrates.ToFRLRCFromChlf1
+      (Chlf1, Chlf1): rates.kF
+      (Chlf2, Chlf2): rates.kF
+      (FRLRC, FRLRP1): yrates.ToFRLRCFromFRLRP1
+      (FRLRP1, FRLRC): yrates.ToFRLRP1FromFRLRC
+      (FRLRP2b, FRLRP1): rates.ToFRLRP2FromFRLRP1
+      (FRLRP2b, FRLRP2b): rates.ToFRLRP2FromFRLRP2
+    clp_constraints:
+    - type: zero
+      target: Ant1
+      interval:
+      - - 700
+        - 715
+  QcomplexFRL:
+    type: kinetic
+    rates:
+      (Bulk, Ant1): rates.ToBulkFromAnt1
+      (Ant1, Bulk): rates.ToAnt1FromBulk
+      (Bulk, Red1): rates.ToBulkFromRed1
+      (Red1, Bulk): yrates.ToRed1FromBulk
+      (Bulk, Red2): rates.ToBulkFromRed2
+      (Red2, Bulk): yrates.ToRed2FromBulk
+      (Red1, Red1): rates.kF
+      (Red2, Red2): rates.kF
+      (Bulk, Bulk): rates.QkBulk
+      (Bulk, FRLRC): yrates.ToBulkFromFRLRC
+      (FRLRC, Bulk): rates.ToFRLRCFromBulk
+      (Chlf1, Bulk): rates.ToChlf1FromBulk
+      (Bulk, Chlf1): yrates.ToBulkFromChlf1
+      (Chlf2, Chlf1): rates.ToChlf2FromChlf1
+      (Chlf1, Chlf2): yrates.ToChlf1FromChlf2
+      (Chlf2, Bulk): rates.ToChlf2FromBulk
+      (Bulk, Chlf2): yrates.ToBulkFromChlf2
+      (Chlf2, FRLRC): rates.ToChlf2FromFRLRC
+      (FRLRC, Chlf2): yrates.ToFRLRCFromChlf2
+      (Chlf1, FRLRC): rates.ToChlf1FromFRLRC
+      (FRLRC, Chlf1): yrates.ToFRLRCFromChlf1
+      (Chlf1, Chlf1): rates.kF
+      (Chlf2, Chlf2): rates.kF
+      (FRLRC, FRLRC): rates.QkFRLRC
+    clp_constraints:
+    - type: zero
+      target: Ant1
+      interval:
+      - - 700
+        - 715
+  QcomplexWL:
+    type: kinetic
+    rates:
+      (Bulk, Ant1): xrates.ToBulkFromAnt1
+      (Ant1, Bulk): rates.ToAnt1FromBulk
+      (Bulk, Red1): xrates.ToBulkFromRed1
+      (Red1, Bulk): yrates.ToRed1FromBulk
+      (Bulk, Red2): xrates.ToBulkFromRed2
+      (Red2, Bulk): yrates.ToRed2FromBulk
+      (Red1, Red1): rates.kF
+      (Red2, Red2): rates.kF
+      (Bulk, Bulk): rates.QkBulk
+    clp_constraints:
+    - type: zero
+      target: Ant1
+      interval:
+      - - 700
+        - 715
+  complexWL720:
+    type: kinetic
+    rates:
+      (Bulk, Ant1): xrates.ToBulkFromAnt1
+      (Ant1, Bulk): rates.ToAnt1FromBulk
+      (Bulk, Red1): xrates.ToBulkFromRed1
+      (Red1, Bulk): yrates.ToRed1FromBulk
+      (Bulk, Red2): xrates.ToBulkFromRed2
+      (Red2, Bulk): yrates.ToRed2FromBulk
+      (Red1, Red1): rates.kF
+      (Red2, Red2): rates.kF
+      (Bulk, Bulk): rates.kF
+      (WLRC, WLRP1): yrates.ToWLRCFromWLRP1
+      (WLRP1, WLRC): yrates.ToWLRP1FromWLRC
+      (Bulk, WLRC): rates.ToBulkFromWLRC
+      (WLRC, Bulk): yrates.ToWLRCFromBulk
+      (WLRP2, WLRP1): rates.ToWLRP2FromWLRP1
+      (WLRP2, WLRP2): rates.ToWLRP2FromWLRP2
+    clp_constraints:
+    - type: zero
+      target: Ant1
+      interval:
+      - - 700
+        - 715
+  complexWL700:
+    type: kinetic
+    rates:
+      (Bulk, Ant1): xrates.ToBulkFromAnt1
+      (Ant1, Bulk): rates.ToAnt1FromBulk
+      (Bulk, Red1): xrates.ToBulkFromRed1
+      (Red1, Bulk): yrates.ToRed1FromBulk
+      (Bulk, Red2): xrates.ToBulkFromRed2
+      (Red2, Bulk): yrates.ToRed2FromBulk
+      (Red1, Red1): rates.kF
+      (Red2, Red2): rates.kF
+      (Bulk, Bulk): rates.kF
+      (WLRC, WLRP1): yrates.ToWLRCFromWLRP1
+      (WLRP1, WLRC): yrates.ToWLRP1FromWLRC
+      (Bulk, WLRC): rates.ToBulkFromWLRC
+      (WLRC, Bulk): yrates.ToWLRCFromBulk
+      (WLRP2a, WLRP1): rates.ToWLRP2FromWLRP1
+      (WLRP2a, WLRP2a): rates.ToWLRP2FromWLRP2
+    clp_constraints:
+    - type: zero
+      target: Ant1
+      interval:
+      - - 700
+        - 715
+  mc2:
+    type: clp-guide
+    target: Red1
+    dimension: time
+  mc3:
+    type: clp-guide
+    target: Red2
+    dimension: time
+  mc4:
+    type: clp-guide
+    target: WLRC
+    dimension: time
+  mc5:
+    type: clp-guide
+    target: WLRP1
+    dimension: time
+  mc8:
+    type: clp-guide
+    target: Chlf1
+    dimension: time
+  mc9:
+    type: clp-guide
+    target: Chlf2
+    dimension: time
+  mc10:
+    type: clp-guide
+    target: FRLRC
+    dimension: time
+  mc11:
+    type: clp-guide
+    target: FRLRP1
+    dimension: time
+experiments:
+  streak:
+    residual_function: non_negative_least_squares
+    datasets:
+      FRLtr1:
+        elements:
+        - complexFRL
+        - freeChla
+        - freeChlf
+        element_scale:
+          complexFRL: scalem.1
+          freeChla: scalem.FRLtr1a
+          freeChlf: scalem.FRLtr1f
+        activations:
+          irf:
+            type: multi-gaussian
+            compartments:
+              sBulk: xinput.BulkFRL
+              sRed1: input.Red1
+              sRed2: input.Red2
+              sFRLRC: input.RC
+              sChlf1: input.Chlf1
+              sChlf2: input.Chlf2
+              freeChla: input.1
+              freeChlf: input.1
+              sFRLRP1: input.0
+            center:
+            - irfFRLtr1.center
+            width:
+            - irfFRLtr1.width1
+            - irfFRLtr1.width2
+            scale:
+            - irfFRLtr1.scale1
+            - irfFRLtr1.scale2
+            backsweep: irf.common_backsweep
+            not_normalized_compartments: &id001
+            - freeChla
+            - freeChlf
+      FRLtr2:
+        elements:
+        - complexFRL
+        - freeChla
+        - freeChlf
+        element_scale:
+          complexFRL: scalem.1
+          freeChla: scalem.FRLtr2a
+          freeChlf: scalem.FRLtr2f
+        activations:
+          irf:
+            type: multi-gaussian
+            compartments:
+              sBulk: xinput.BulkFRL
+              sRed1: input.Red1
+              sRed2: input.Red2
+              sFRLRC: input.RC
+              sChlf1: input.Chlf1
+              sChlf2: input.Chlf2
+              freeChla: input.1
+              freeChlf: input.1
+              sFRLRP1: input.0
+            center:
+            - irfFRLtr2.center
+            width:
+            - irfFRLtr2.width1
+            - irfFRLtr2.width2
+            scale:
+            - irfFRLtr2.scale1
+            - irfFRLtr2.scale2
+            backsweep: irf.common_backsweep
+            not_normalized_compartments: *id001
+      FRLtr4:
+        elements:
+        - complexFRL
+        - freeChla
+        - freeChlf
+        element_scale:
+          complexFRL: scalem.1
+          freeChla: scalem.FRLtr4a
+          freeChlf: scalem.FRLtr4f
+        activations:
+          irf:
+            type: multi-gaussian
+            compartments:
+              sBulk: xinput.BulkFRL
+              sRed1: input.Red1
+              sRed2: input.Red2
+              sFRLRC: input.RC
+              sChlf1: input.Chlf1
+              sChlf2: input.Chlf2
+              freeChla: input.1
+              freeChlf: input.1
+              sFRLRP1: input.0
+            center:
+            - irfFRLtr4.center
+            width:
+            - irfFRLtr4.width1
+            - irfFRLtr4.width2
+            scale:
+            - irfFRLtr4.scale1
+            - irfFRLtr4.scale2
+            backsweep: irf.common_backsweep
+            not_normalized_compartments: *id001
+      WLtr1:
+        elements:
+        - complexWL
+        - freeChla
+        - freeChla2
+        element_scale:
+          complexWL: scalem.1
+          freeChla: scalem.WLtr1a
+          freeChla2: scalem.WLtr1a2
+        activations:
+          irf:
+            type: multi-gaussian
+            compartments:
+              sBulk: input.Bulk
+              sRed1: input.Red1
+              sRed2: input.Red2
+              sWLRC: input.RC
+              freeChla: input.1
+              freeChla2: input.1
+              sWLRP1: input.0
+            center:
+            - irfWLtr1.center
+            width:
+            - irfWLtr1.width1
+            - irfWLtr1.width2
+            scale:
+            - irfWLtr1.scale1
+            - irfWLtr1.scale2
+            backsweep: irf.common_backsweep
+            not_normalized_compartments: &id002
+            - freeChla
+            - freeChla2
+      WLtr2:
+        elements:
+        - complexWL
+        - freeChla
+        - freeChla2
+        element_scale:
+          complexWL: scalem.1
+          freeChla: scalem.WLtr2a
+          freeChla2: scalem.WLtr2a2
+        activations:
+          irf:
+            type: multi-gaussian
+            compartments:
+              sBulk: input.Bulk
+              sRed1: input.Red1
+              sRed2: input.Red2
+              sWLRC: input.RC
+              freeChla: input.1
+              freeChla2: input.1
+              sWLRP1: input.0
+            center:
+            - irfWLtr2.center
+            width:
+            - irfWLtr2.width1
+            - irfWLtr2.width2
+            scale:
+            - irfWLtr2.scale1
+            - irfWLtr2.scale2
+            backsweep: irf.common_backsweep
+            not_normalized_compartments: *id002
+      CF9212FRLtr1:
+        elements:
+        - CF9212complexFRL
+        - CF9212freeChla
+        - CF9212freeChlf
+        element_scale:
+          CF9212complexFRL: CF9212scalem.1
+          CF9212freeChla: CF9212scalem.FRLtr1a
+          CF9212freeChlf: CF9212scalem.FRLtr1f
+        activations:
+          irf:
+            type: multi-gaussian
+            compartments:
+              CF9212Bulk: xinput.BulkFRL
+              CF9212Red1: input.Red1
+              CF9212Red2: input.Red2
+              CF9212FRLRC: input.RC
+              CF9212Chlf1: input.Chlf1
+              CF9212Chlf2: input.Chlf2
+              CF9212freeChla: input.1
+              CF9212freeChlf: input.1
+              CF9212FRLRP1: input.0
+            center:
+            - CF9212irfFRLtr1.center
+            width:
+            - CF9212irfFRLtr1.width1
+            - CF9212irfFRLtr1.width2
+            scale:
+            - CF9212irfFRLtr1.scale1
+            - CF9212irfFRLtr1.scale2
+            backsweep: irf.common_backsweep
+            not_normalized_compartments: &id003
+            - CF9212freeChla
+            - CF9212freeChlf
+        weights:
+        - global_interval:
+          - 100
+          - 1000
+          value: 0.5
+      CF9212FRLtr2:
+        elements:
+        - CF9212complexFRL
+        - CF9212freeChla
+        - CF9212freeChlf
+        element_scale:
+          CF9212complexFRL: CF9212scalem.1
+          CF9212freeChla: CF9212scalem.FRLtr2a
+          CF9212freeChlf: CF9212scalem.FRLtr2f
+        activations:
+          irf:
+            type: multi-gaussian
+            compartments:
+              CF9212Bulk: xinput.BulkFRL
+              CF9212Red1: input.Red1
+              CF9212Red2: input.Red2
+              CF9212FRLRC: input.RC
+              CF9212Chlf1: input.Chlf1
+              CF9212Chlf2: input.Chlf2
+              CF9212freeChla: input.1
+              CF9212freeChlf: input.1
+              CF9212FRLRP1: input.0
+            center:
+            - CF9212irfFRLtr2.center
+            width:
+            - CF9212irfFRLtr2.width1
+            - CF9212irfFRLtr2.width2
+            scale:
+            - CF9212irfFRLtr2.scale1
+            - CF9212irfFRLtr2.scale2
+            backsweep: irf.common_backsweep
+            not_normalized_compartments: *id003
+        weights:
+        - global_interval:
+          - 100
+          - 1000
+          value: 0.5
+      CF9212FRLtr4:
+        elements:
+        - CF9212complexFRL
+        - CF9212freeChla
+        - CF9212freeChlf
+        element_scale:
+          CF9212complexFRL: CF9212scalem.1
+          CF9212freeChla: CF9212scalem.FRLtr4a
+          CF9212freeChlf: CF9212scalem.FRLtr4f
+        activations:
+          irf:
+            type: multi-gaussian
+            compartments:
+              CF9212Bulk: xinput.BulkFRL
+              CF9212Red1: input.Red1
+              CF9212Red2: input.Red2
+              CF9212FRLRC: input.RC
+              CF9212Chlf1: input.Chlf1
+              CF9212Chlf2: input.Chlf2
+              CF9212freeChla: input.1
+              CF9212freeChlf: input.1
+              CF9212FRLRP1: input.0
+            center:
+            - CF9212irfFRLtr4.center
+            width:
+            - CF9212irfFRLtr4.width1
+            - CF9212irfFRLtr4.width2
+            scale:
+            - CF9212irfFRLtr4.scale1
+            - CF9212irfFRLtr4.scale2
+            backsweep: irf.common_backsweep
+            not_normalized_compartments: *id003
+        weights:
+        - global_interval:
+          - 100
+          - 1000
+          value: 0.5
+      CF9212WLtr1:
+        elements:
+        - CF9212complexWL
+        - CF9212freeChla
+        element_scale:
+          CF9212complexWL: CF9212scalem.1
+          CF9212freeChla: CF9212scalem.WLtr1a
+        activations:
+          irf:
+            type: multi-gaussian
+            compartments:
+              CF9212Bulk: input.Bulk
+              CF9212Red1: input.Red1
+              CF9212Red2: input.Red2
+              CF9212WLRC: input.RC
+              CF9212freeChla: input.1
+              CF9212WLRP1: input.0
+            center:
+            - CF9212irfWLtr1.center
+            width:
+            - CF9212irfWLtr1.width1
+            - CF9212irfWLtr1.width2
+            scale:
+            - CF9212irfWLtr1.scale1
+            - CF9212irfWLtr1.scale2
+            backsweep: irf.common_backsweep
+            not_normalized_compartments: &id004
+            - CF9212freeChla
+        weights:
+        - global_interval:
+          - 100
+          - 1000
+          value: 0.5
+      CF9212WLtr2:
+        elements:
+        - CF9212complexWL
+        - CF9212freeChla
+        element_scale:
+          CF9212complexWL: CF9212scalem.1
+          CF9212freeChla: CF9212scalem.WLtr2a
+        activations:
+          irf:
+            type: multi-gaussian
+            compartments:
+              CF9212Bulk: input.Bulk
+              CF9212Red1: input.Red1
+              CF9212Red2: input.Red2
+              CF9212WLRC: input.RC
+              CF9212freeChla: input.1
+              CF9212WLRP1: input.0
+            center:
+            - CF9212irfWLtr2.center
+            width:
+            - CF9212irfWLtr2.width1
+            - CF9212irfWLtr2.width2
+            scale:
+            - CF9212irfWLtr2.scale1
+            - CF9212irfWLtr2.scale2
+            backsweep: irf.common_backsweep
+            not_normalized_compartments: *id004
+        weights:
+        - global_interval:
+          - 100
+          - 1000
+          value: 0.5
+      CT7203FRLtr1:
+        elements:
+        - CT7203complexFRL
+        - CT7203freeChla
+        - CT7203freeChlf
+        element_scale:
+          CT7203complexFRL: CT7203scalem.1
+          CT7203freeChla: CT7203scalem.FRLtr1a
+          CT7203freeChlf: CT7203scalem.FRLtr1f
+        activations:
+          irf:
+            type: multi-gaussian
+            compartments:
+              CT7203Bulk: xinput.BulkFRL
+              CT7203Red1: input.Red1
+              CT7203Red2: input.Red2
+              CT7203FRLRC: input.RC
+              CT7203Chlf1: input.Chlf1
+              CT7203Chlf2: input.Chlf2
+              CT7203freeChla: input.1
+              CT7203freeChlf: input.1
+              CT7203FRLRP1: input.0
+            center:
+            - CT7203irfFRLtr1.center
+            width:
+            - CT7203irfFRLtr1.width1
+            - CT7203irfFRLtr1.width2
+            scale:
+            - CT7203irfFRLtr1.scale1
+            - CT7203irfFRLtr1.scale2
+            backsweep: irf.common_backsweep
+            not_normalized_compartments: &id005
+            - CT7203freeChla
+            - CT7203freeChlf
+        weights:
+        - global_interval:
+          - 100
+          - 1000
+          value: 0.5
+      CT7203FRLtr2:
+        elements:
+        - CT7203complexFRL
+        - CT7203freeChla
+        - CT7203freeChlf
+        element_scale:
+          CT7203complexFRL: CT7203scalem.1
+          CT7203freeChla: CT7203scalem.FRLtr2a
+          CT7203freeChlf: CT7203scalem.FRLtr2f
+        activations:
+          irf:
+            type: multi-gaussian
+            compartments:
+              CT7203Bulk: xinput.BulkFRL
+              CT7203Red1: input.Red1
+              CT7203Red2: input.Red2
+              CT7203FRLRC: input.RC
+              CT7203Chlf1: input.Chlf1
+              CT7203Chlf2: input.Chlf2
+              CT7203freeChla: input.1
+              CT7203freeChlf: input.1
+              CT7203FRLRP1: input.0
+            center:
+            - CT7203irfFRLtr2.center
+            width:
+            - CT7203irfFRLtr2.width1
+            - CT7203irfFRLtr2.width2
+            scale:
+            - CT7203irfFRLtr2.scale1
+            - CT7203irfFRLtr2.scale2
+            backsweep: irf.common_backsweep
+            not_normalized_compartments: *id005
+        weights:
+        - global_interval:
+          - 100
+          - 1000
+          value: 0.5
+      CT7203FRLtr4:
+        elements:
+        - CT7203complexFRL
+        - CT7203freeChla
+        - CT7203freeChlf
+        element_scale:
+          CT7203complexFRL: CT7203scalem.1
+          CT7203freeChla: CT7203scalem.FRLtr4a
+          CT7203freeChlf: CT7203scalem.FRLtr4f
+        activations:
+          irf:
+            type: multi-gaussian
+            compartments:
+              CT7203Bulk: xinput.BulkFRL
+              CT7203Red1: input.Red1
+              CT7203Red2: input.Red2
+              CT7203FRLRC: input.RC
+              CT7203Chlf1: input.Chlf1
+              CT7203Chlf2: input.Chlf2
+              CT7203freeChla: input.1
+              CT7203freeChlf: input.1
+              CT7203FRLRP1: input.0
+            center:
+            - CT7203irfFRLtr4.center
+            width:
+            - CT7203irfFRLtr4.width1
+            - CT7203irfFRLtr4.width2
+            scale:
+            - CT7203irfFRLtr4.scale1
+            - CT7203irfFRLtr4.scale2
+            backsweep: irf.common_backsweep
+            not_normalized_compartments: *id005
+        weights:
+        - global_interval:
+          - 100
+          - 1000
+          value: 0.5
+      CT7203WLtr1:
+        elements:
+        - CT7203complexWL
+        - CT7203freeChla
+        - CT7203freeChla2
+        element_scale:
+          CT7203complexWL: CT7203scalem.1
+          CT7203freeChla: CT7203scalem.WLtr1a
+          CT7203freeChla2: CT7203scalem.WLtr1a2
+        activations:
+          irf:
+            type: multi-gaussian
+            compartments:
+              CT7203Bulk: input.Bulk
+              CT7203Red1: input.Red1
+              CT7203Red2: input.Red2
+              CT7203WLRC: input.RC
+              CT7203freeChla: input.1
+              CT7203freeChla2: input.1
+              CT7203WLRP1: input.0
+            center:
+            - CT7203irfWLtr1.center
+            width:
+            - CT7203irfWLtr1.width1
+            - CT7203irfWLtr1.width2
+            scale:
+            - CT7203irfWLtr1.scale1
+            - CT7203irfWLtr1.scale2
+            backsweep: irf.common_backsweep
+            not_normalized_compartments: &id006
+            - CT7203freeChla
+            - CT7203freeChla2
+        weights:
+        - global_interval:
+          - 100
+          - 1000
+          value: 0.5
+      CT7203WLtr2:
+        elements:
+        - CT7203complexWL
+        - CT7203freeChla
+        - CT7203freeChla2
+        element_scale:
+          CT7203complexWL: CT7203scalem.1
+          CT7203freeChla: CT7203scalem.WLtr2a
+          CT7203freeChla2: CT7203scalem.WLtr2a2
+        activations:
+          irf:
+            type: multi-gaussian
+            compartments:
+              CT7203Bulk: input.Bulk
+              CT7203Red1: input.Red1
+              CT7203Red2: input.Red2
+              CT7203WLRC: input.RC
+              CT7203freeChla: input.1
+              CT7203freeChla2: input.1
+              CT7203WLRP1: input.0
+            center:
+            - CT7203irfWLtr2.center
+            width:
+            - CT7203irfWLtr2.width1
+            - CT7203irfWLtr2.width2
+            scale:
+            - CT7203irfWLtr2.scale1
+            - CT7203irfWLtr2.scale2
+            backsweep: irf.common_backsweep
+            not_normalized_compartments: *id006
+        weights:
+        - global_interval:
+          - 100
+          - 1000
+          value: 0.5
+      Syn7335FRLtr1:
+        elements:
+        - Syn7335complexFRL
+        - Syn7335freeChla
+        - Syn7335freeChlf
+        element_scale:
+          Syn7335complexFRL: Syn7335scalem.1
+          Syn7335freeChla: Syn7335scalem.FRLtr1a
+          Syn7335freeChlf: Syn7335scalem.FRLtr1f
+        activations:
+          irf:
+            type: multi-gaussian
+            compartments:
+              Syn7335Bulk: xinput.BulkFRL
+              Syn7335Red1: input.Red1
+              Syn7335Red2: input.Red2
+              Syn7335FRLRC: input.RC
+              Syn7335Chlf1: input.Chlf1
+              Syn7335Chlf2: input.Chlf2
+              Syn7335freeChla: input.1
+              Syn7335freeChlf: input.1
+              Syn7335FRLRP1: input.0
+            center:
+            - Syn7335irfFRLtr1.center
+            width:
+            - Syn7335irfFRLtr1.width1
+            - Syn7335irfFRLtr1.width2
+            scale:
+            - Syn7335irfFRLtr1.scale1
+            - Syn7335irfFRLtr1.scale2
+            backsweep: irf.common_backsweep
+            not_normalized_compartments: &id007
+            - Syn7335freeChla
+            - Syn7335freeChlf
+        weights:
+        - global_interval:
+          - 100
+          - 1000
+          value: 0.5
+      Syn7335FRLtr2:
+        elements:
+        - Syn7335complexFRL
+        - Syn7335freeChla
+        - Syn7335freeChlf
+        element_scale:
+          Syn7335complexFRL: Syn7335scalem.1
+          Syn7335freeChla: Syn7335scalem.FRLtr2a
+          Syn7335freeChlf: Syn7335scalem.FRLtr2f
+        activations:
+          irf:
+            type: multi-gaussian
+            compartments:
+              Syn7335Bulk: xinput.BulkFRL
+              Syn7335Red1: input.Red1
+              Syn7335Red2: input.Red2
+              Syn7335FRLRC: input.RC
+              Syn7335Chlf1: input.Chlf1
+              Syn7335Chlf2: input.Chlf2
+              Syn7335freeChla: input.1
+              Syn7335freeChlf: input.1
+              Syn7335FRLRP1: input.0
+            center:
+            - Syn7335irfFRLtr2.center
+            width:
+            - Syn7335irfFRLtr2.width1
+            - Syn7335irfFRLtr2.width2
+            scale:
+            - Syn7335irfFRLtr2.scale1
+            - Syn7335irfFRLtr2.scale2
+            backsweep: irf.common_backsweep
+            not_normalized_compartments: *id007
+        weights:
+        - global_interval:
+          - 100
+          - 1000
+          value: 0.5
+      Syn7335FRLtr4:
+        elements:
+        - Syn7335complexFRL
+        - Syn7335freeChla
+        - Syn7335freeChlf
+        element_scale:
+          Syn7335complexFRL: Syn7335scalem.1
+          Syn7335freeChla: Syn7335scalem.FRLtr4a
+          Syn7335freeChlf: Syn7335scalem.FRLtr4f
+        activations:
+          irf:
+            type: multi-gaussian
+            compartments:
+              Syn7335Bulk: xinput.BulkFRL
+              Syn7335Red1: input.Red1
+              Syn7335Red2: input.Red2
+              Syn7335FRLRC: input.RC
+              Syn7335Chlf1: input.Chlf1
+              Syn7335Chlf2: input.Chlf2
+              Syn7335freeChla: input.1
+              Syn7335freeChlf: input.1
+              Syn7335FRLRP1: input.0
+            center:
+            - Syn7335irfFRLtr4.center
+            width:
+            - Syn7335irfFRLtr4.width1
+            - Syn7335irfFRLtr4.width2
+            scale:
+            - Syn7335irfFRLtr4.scale1
+            - Syn7335irfFRLtr4.scale2
+            backsweep: irf.common_backsweep
+            not_normalized_compartments: *id007
+        weights:
+        - global_interval:
+          - 100
+          - 1000
+          value: 0.5
+      Syn7335WLtr1:
+        elements:
+        - Syn7335complexWL
+        - Syn7335freeChla
+        element_scale:
+          Syn7335complexWL: Syn7335scalem.1
+          Syn7335freeChla: Syn7335scalem.WLtr1a
+        activations:
+          irf:
+            type: multi-gaussian
+            compartments:
+              Syn7335Bulk: input.Bulk
+              Syn7335Red1: input.Red1
+              Syn7335Red2: input.Red2
+              Syn7335WLRC: input.RC
+              Syn7335freeChla: input.1
+              Syn7335WLRP1: input.0
+            center:
+            - Syn7335irfWLtr1.center
+            width:
+            - Syn7335irfWLtr1.width1
+            - Syn7335irfWLtr1.width2
+            scale:
+            - Syn7335irfWLtr1.scale1
+            - Syn7335irfWLtr1.scale2
+            backsweep: irf.common_backsweep
+            not_normalized_compartments: &id008
+            - Syn7335freeChla
+        weights:
+        - global_interval:
+          - 100
+          - 1000
+          value: 0.5
+      Syn7335WLtr2:
+        elements:
+        - Syn7335complexWL
+        - Syn7335freeChla
+        element_scale:
+          Syn7335complexWL: Syn7335scalem.1
+          Syn7335freeChla: Syn7335scalem.WLtr2a
+        activations:
+          irf:
+            type: multi-gaussian
+            compartments:
+              Syn7335Bulk: input.Bulk
+              Syn7335Red1: input.Red1
+              Syn7335Red2: input.Red2
+              Syn7335WLRC: input.RC
+              Syn7335freeChla: input.1
+              Syn7335WLRP1: input.0
+            center:
+            - Syn7335irfWLtr2.center
+            width:
+            - Syn7335irfWLtr2.width1
+            - Syn7335irfWLtr2.width2
+            scale:
+            - Syn7335irfWLtr2.scale1
+            - Syn7335irfWLtr2.scale2
+            backsweep: irf.common_backsweep
+            not_normalized_compartments: *id008
+        weights:
+        - global_interval:
+          - 100
+          - 1000
+          value: 0.5
+      BulkSAS:
+        elements:
+        - smc1
+      Red1SAS:
+        elements:
+        - smc2
+        weights:
+        - global_interval:
+          - 100
+          - 1000
+          value: 0.3
+      Red2SAS:
+        elements:
+        - smc3
+        weights:
+        - global_interval:
+          - 100
+          - 1000
+          value: 0.3
+      WLRCSAS:
+        elements:
+        - smc4
+        weights:
+        - global_interval:
+          - 100
+          - 1000
+          value: 0.3
+      Chlf1SAS:
+        elements:
+        - smc8
+        weights:
+        - global_interval:
+          - 100
+          - 1000
+          value: 0.3
+      freeChlfSAS:
+        elements:
+        - smc12
+        weights:
+        - global_interval:
+          - 100
+          - 1000
+          value: 0.3
+      Chlf2SAS:
+        elements:
+        - smc9
+        weights:
+        - global_interval:
+          - 100
+          - 1000
+          value: 0.3
+      FRLRCSAS:
+        elements:
+        - smc10
+        weights:
+        - global_interval:
+          - 100
+          - 1000
+          value: 1.3
+      Syn7335FRLRCSAS:
+        elements:
+        - Syn7335smc10
+    clp_link_tolerance: 0.1
+    scale:
+      FRLtr1: scale.FRLtr1
+      FRLtr2: scale.FRLtr2
+      FRLtr4: scale.FRLtr4
+      WLtr1: scale.WLtr1
+      WLtr2: scale.WLtr2
+      CF9212FRLtr1: CF9212scale.FRLtr1
+      CF9212FRLtr2: CF9212scale.FRLtr2
+      CF9212FRLtr4: CF9212scale.FRLtr4
+      CF9212WLtr1: CF9212scale.WLtr1
+      CF9212WLtr2: CF9212scale.WLtr2
+      CT7203FRLtr1: CT7203scale.FRLtr1
+      CT7203FRLtr2: CT7203scale.FRLtr2
+      CT7203FRLtr4: CT7203scale.FRLtr4
+      CT7203WLtr1: CT7203scale.WLtr1
+      CT7203WLtr2: CT7203scale.WLtr2
+      Syn7335FRLtr1: Syn7335scale.FRLtr1
+      Syn7335FRLtr2: Syn7335scale.FRLtr2
+      Syn7335FRLtr4: Syn7335scale.FRLtr4
+      Syn7335WLtr1: Syn7335scale.WLtr1
+      Syn7335WLtr2: Syn7335scale.WLtr2
+      BulkSAS: scale.BulkSAS
+      Red1SAS: scale.Red1SAS
+      Red2SAS: scale.Red2SAS
+      WLRCSAS: scale.WLRCSAS
+      Chlf1SAS: scale.Chlf1SAS
+      freeChlfSAS: scale.freeChlfSAS
+      Chlf2SAS: scale.Chlf2SAS
+      FRLRCSAS: scale.FRLRCSAS
+      Syn7335FRLRCSAS: xscale.Syn7335FRLRCSAS
+    clp_relations:
+    - source: freeChla
+      target: freeChla2
+      parameter: rel.r1
+      interval:
+      - - 0
+        - 1000
+    - source: CT7203freeChla
+      target: CT7203freeChla2
+      parameter: rel.r1
+      interval:
+      - - 0
+        - 1000
+    - source: freeChlf
+      target: CF9212freeChlf
+      parameter: rel.r1
+      interval:
+      - - 0
+        - 1000
+    - source: freeChlf
+      target: Syn7335freeChlf
+      parameter: rel.r1
+      interval:
+      - - 0
+        - 1000
+    - source: CF9212freeChla
+      target: Syn7335freeChla
+      parameter: rel.r1
+      interval:
+      - - 0
+        - 1000
+    - source: freeChlf
+      target: CT7203freeChlf
+      parameter: rel.r1
+      interval:
+      - - 0
+        - 1000
+    - source: sWLRC
+      target: CT7203WLRC
+      parameter: rel.r1
+      interval:
+      - - 0
+        - 1000
+    - source: sFRLRC
+      target: CT7203FRLRC
+      parameter: rel.r1
+      interval:
+      - - 0
+        - 1000
+    - source: sRed1
+      target: CT7203Red1
+      parameter: rel.r1
+      interval:
+      - - 0
+        - 1000
+    - source: sRed2
+      target: CT7203Red2
+      parameter: rel.r1
+      interval:
+      - - 0
+        - 1000
+    - source: sChlf2
+      target: CT7203Chlf2
+      parameter: rel.r1
+      interval:
+      - - 0
+        - 800
+    - source: sWLRC
+      target: Syn7335WLRC
+      parameter: rel.r1
+      interval:
+      - - 0
+        - 1000
+    - source: sWLRC
+      target: CF9212WLRC
+      parameter: rel.r1
+      interval:
+      - - 0
+        - 1000
+    - source: sFRLRC
+      target: CF9212FRLRC
+      parameter: rel.r1
+      interval:
+      - - 0
+        - 1000
+    - source: sRed1
+      target: CF9212Red1
+      parameter: rel.r1
+      interval:
+      - - 0
+        - 1000
+    - source: sRed2
+      target: CF9212Red2
+      parameter: rel.r1
+      interval:
+      - - 0
+        - 1000
+    - source: sRed1
+      target: Syn7335Red1
+      parameter: rel.r1
+      interval:
+      - - 0
+        - 1000
+    - source: sRed2
+      target: Syn7335Red2
+      parameter: rel.r1
+      interval:
+      - - 0
+        - 1000
+    - source: sChlf2
+      target: CF9212Chlf2
+      parameter: rel.r1
+      interval:
+      - - 0
+        - 800
+    clp_penalties:
+    - type: equal_area
+      source: sRed1
+      source_intervals:
+      - - 0
+        - 1000
+      target: sBulk
+      target_intervals:
+      - - 0
+        - 1000
+      parameter: area.Bulk
+      weight: 0.62
+    - type: equal_area
+      source: sRed1
+      source_intervals:
+      - - 0
+        - 1000
+      target: sRed2
+      target_intervals:
+      - - 0
+        - 1000
+      parameter: area.1
+      weight: 0.62
+    - type: equal_area
+      source: sRed1
+      source_intervals:
+      - - 0
+        - 1000
+      target: sWLRC
+      target_intervals:
+      - - 0
+        - 1000
+      parameter: area.1
+      weight: 0.62
+    - type: equal_area
+      source: sRed1
+      source_intervals:
+      - - 0
+        - 1000
+      target: sFRLRC
+      target_intervals:
+      - - 0
+        - 1000
+      parameter: area.1
+      weight: 1.62
+    - type: equal_area
+      source: sRed1
+      source_intervals:
+      - - 0
+        - 1000
+      target: sChlf1
+      target_intervals:
+      - - 0
+        - 1000
+      parameter: area.1
+      weight: 0.62
+    - type: equal_area
+      source: sRed1
+      source_intervals:
+      - - 0
+        - 1000
+      target: sChlf2
+      target_intervals:
+      - - 0
+        - 1000
+      parameter: area.1
+      weight: 0.62
+    - type: equal_area
+      source: sRed1
+      source_intervals:
+      - - 0
+        - 1000
+      target: CF9212Bulk
+      target_intervals:
+      - - 0
+        - 1000
+      parameter: area.Bulk
+      weight: 0.62
+    - type: equal_area
+      source: sRed1
+      source_intervals:
+      - - 0
+        - 1000
+      target: CF9212Red2
+      target_intervals:
+      - - 0
+        - 1000
+      parameter: area.1
+      weight: 0.62
+    - type: equal_area
+      source: sRed1
+      source_intervals:
+      - - 0
+        - 1000
+      target: CF9212WLRC
+      target_intervals:
+      - - 0
+        - 1000
+      parameter: area.1
+      weight: 0.62
+    - type: equal_area
+      source: sRed1
+      source_intervals:
+      - - 0
+        - 1000
+      target: CF9212FRLRC
+      target_intervals:
+      - - 0
+        - 1000
+      parameter: area.1
+      weight: 0.62
+    - type: equal_area
+      source: sRed1
+      source_intervals:
+      - - 0
+        - 1000
+      target: CF9212Chlf1
+      target_intervals:
+      - - 0
+        - 1000
+      parameter: area.1
+      weight: 0.62
+    - type: equal_area
+      source: sRed1
+      source_intervals:
+      - - 0
+        - 1000
+      target: CF9212Chlf2
+      target_intervals:
+      - - 0
+        - 1000
+      parameter: area.1
+      weight: 0.62
+    - type: equal_area
+      source: sRed1
+      source_intervals:
+      - - 0
+        - 1000
+      target: Syn7335Bulk
+      target_intervals:
+      - - 0
+        - 1000
+      parameter: area.Bulk
+      weight: 0.62
+    - type: equal_area
+      source: sRed1
+      source_intervals:
+      - - 0
+        - 1000
+      target: Syn7335Red2
+      target_intervals:
+      - - 0
+        - 1000
+      parameter: area.1
+      weight: 0.62
+    - type: equal_area
+      source: sRed1
+      source_intervals:
+      - - 0
+        - 1000
+      target: Syn7335WLRC
+      target_intervals:
+      - - 0
+        - 1000
+      parameter: area.1
+      weight: 0.62
+    - type: equal_area
+      source: sRed1
+      source_intervals:
+      - - 0
+        - 1000
+      target: Syn7335FRLRC
+      target_intervals:
+      - - 0
+        - 1000
+      parameter: area.1
+      weight: 3.62
+    - type: equal_area
+      source: sRed1
+      source_intervals:
+      - - 0
+        - 1000
+      target: Syn7335Chlf1
+      target_intervals:
+      - - 0
+        - 1000
+      parameter: area.1
+      weight: 0.62
+    - type: equal_area
+      source: sRed1
+      source_intervals:
+      - - 0
+        - 1000
+      target: Syn7335Chlf2
+      target_intervals:
+      - - 0
+        - 1000
+      parameter: area.1
+      weight: 0.62
+    - type: equal_area
+      source: sRed1
+      source_intervals:
+      - - 0
+        - 1000
+      target: CT7203Bulk
+      target_intervals:
+      - - 0
+        - 1000
+      parameter: area.Bulk
+      weight: 0.62
+    - type: equal_area
+      source: sRed1
+      source_intervals:
+      - - 0
+        - 1000
+      target: CT7203Red2
+      target_intervals:
+      - - 0
+        - 1000
+      parameter: area.1
+      weight: 0.62
+    - type: equal_area
+      source: sRed1
+      source_intervals:
+      - - 0
+        - 1000
+      target: CT7203WLRC
+      target_intervals:
+      - - 0
+        - 1000
+      parameter: area.1
+      weight: 0.62
+    - type: equal_area
+      source: sRed1
+      source_intervals:
+      - - 0
+        - 1000
+      target: CT7203FRLRC
+      target_intervals:
+      - - 0
+        - 1000
+      parameter: area.1
+      weight: 0.62
+    - type: equal_area
+      source: sRed1
+      source_intervals:
+      - - 0
+        - 1000
+      target: CT7203Chlf1
+      target_intervals:
+      - - 0
+        - 1000
+      parameter: area.1
+      weight: 0.62
+    - type: equal_area
+      source: sRed1
+      source_intervals:
+      - - 0
+        - 1000
+      target: CT7203Chlf2
+      target_intervals:
+      - - 0
+        - 1000
+      parameter: area.1
+      weight: 0.62
+  default:
+    residual_function: variable_projection
+    datasets:
+      FRL670:
+        elements:
+        - complexFRL670
+        - QcomplexFRL
+        element_scale:
+          complexFRL670: scalem.1
+          QcomplexFRL: scalem.FRL670Q
+        activations:
+          irf:
+            type: multi-gaussian
+            compartments:
+              Ant1: inputFRL670.Ant1
+              Bulk: inputFRL670.Bulk
+              Red1: inputFRL670.Red1
+              Red2: inputFRL670.Red2
+              FRLRC: inputFRL670.FRLRC
+              FRLRP1: inputFRL670.0
+              FRLRP2b: inputFRL670.0
+              Chlf1: inputFRL670.Chlf1
+              Chlf2: inputFRL670.Chlf2
+            center: &id009
+            - irf.center1
+            width: &id010
+            - irf.width1
+      FRL700:
+        elements:
+        - complexFRL700
+        - QcomplexFRL
+        element_scale:
+          complexFRL700: scalem.1
+          QcomplexFRL: scalem.FRL670Q
+        activations:
+          irf:
+            type: multi-gaussian
+            compartments:
+              Ant1: inputFRL700.Ant1
+              Bulk: inputFRL700.Bulk
+              Red1: inputFRL700.Red1
+              Red2: inputFRL700.Red2
+              FRLRC: inputFRL700.FRLRC
+              FRLRP1: inputFRL700.0
+              FRLRP2a: inputFRL700.0
+              Chlf1: inputFRL700.Chlf1
+              Chlf2: inputFRL700.Chlf2
+            center: *id009
+            width: *id010
+      FRL740:
+        elements:
+        - complexFRL740
+        - QcomplexFRL
+        element_scale:
+          complexFRL740: scalem.1
+          QcomplexFRL: scalem.FRL670Q
+        activations:
+          irf:
+            type: multi-gaussian
+            compartments:
+              Ant1: inputFRL740.Ant1
+              Bulk: inputFRL740.Bulk
+              Red1: inputFRL740.Red1
+              Red2: inputFRL740.Red2
+              FRLRC: inputFRL740.FRLRC
+              FRLRP1: inputFRL740.0
+              FRLRP2: inputFRL740.0
+              Chlf1: inputFRL740.Chlf1
+              Chlf2: inputFRL740.Chlf2
+            center: *id009
+            width: *id010
+      WL700:
+        elements:
+        - complexWL700
+        - QcomplexWL
+        element_scale:
+          complexWL700: scalem.1
+          QcomplexWL: scalem.WL700Q
+        activations:
+          irf:
+            type: multi-gaussian
+            compartments:
+              Ant1: inputWL700.Ant1
+              Bulk: inputWL700.Bulk
+              Red1: inputWL700.Red1
+              Red2: inputWL700.Red2
+              WLRC: inputWL700.WLRC
+              WLRP1: inputWL700.0
+              WLRP2a: inputWL700.0
+            center: *id009
+            width: *id010
+      WL720:
+        elements:
+        - complexWL720
+        - QcomplexWL
+        element_scale:
+          complexWL720: scalem.1
+          QcomplexWL: scalem.WL720Q
+        activations:
+          irf:
+            type: multi-gaussian
+            compartments:
+              Ant1: inputWL720.Ant1
+              Bulk: inputWL720.Bulk
+              Red1: inputWL720.Red1
+              Red2: inputWL720.Red2
+              WLRC: inputWL720.WLRC
+              WLRP1: input.0
+              WLRP2: input.0
+            center: *id009
+            width: *id010
+      Red1SADS:
+        elements:
+        - mc2
+        weights:
+        - global_interval:
+          - 100
+          - 1000
+          value: 1.e0
+      Red2SADS:
+        elements:
+        - mc3
+        weights:
+        - global_interval:
+          - 100
+          - 1000
+          value: 1.e0
+      WLRCSADS:
+        elements:
+        - mc4
+        weights:
+        - global_interval:
+          - 100
+          - 1000
+          value: 1.e0
+      WLRP1SADS:
+        elements:
+        - mc5
+        weights:
+        - global_interval:
+          - 100
+          - 1000
+          value: 4.e0
+      Chlf1SADS:
+        elements:
+        - mc8
+        weights:
+        - global_interval:
+          - 100
+          - 1000
+          value: 1.e0
+      Chlf2SADS:
+        elements:
+        - mc9
+        weights:
+        - global_interval:
+          - 100
+          - 1000
+          value: 1.e0
+      FRLRCSADS:
+        elements:
+        - mc10
+        weights:
+        - global_interval:
+          - 100
+          - 1000
+          value: 0.7
+      FRLRP1SADS:
+        elements:
+        - mc11
+        weights:
+        - global_interval:
+          - 100
+          - 1000
+          value: 0.7
+    clp_link_tolerance: 0.1
+    scale:
+      FRL670: scale.FRL670
+      FRL700: scale.FRL700
+      FRL740: scale.FRL740
+      WL700: scale.WL700
+      WL720: scale.WL720
+      Red1SADS: scale.Red1SADS
+      Red2SADS: scale.Red2SADS
+      WLRCSADS: scale.WLRCSADS
+      WLRP1SADS: scale.WLRP1SADS
+      Chlf1SADS: scale.Chlf1SADS
+      Chlf2SADS: scale.Chlf2SADS
+      FRLRCSADS: scale.FRLRCSADS
+      FRLRP1SADS: scale.FRLRP1SADS
+    clp_penalties:
+    - type: equal_area
+      source: Red1
+      source_intervals:
+      - - 690
+        - 740
+      target: Bulk
+      target_intervals:
+      - - 675
+        - 770
+      parameter: area.Bulk
+      weight: 0.06
+    - type: equal_area
+      source: Red1
+      source_intervals:
+      - - 690
+        - 740
+      target: Red2
+      target_intervals:
+      - - 700
+        - 780
+      parameter: area.1
+      weight: 0.06
+    - type: equal_area
+      source: Red1
+      source_intervals:
+      - - 690
+        - 740
+      target: WLRC
+      target_intervals:
+      - - 685
+        - 725
+      parameter: area.1
+      weight: 0.06
+    - type: equal_area
+      source: Red1
+      source_intervals:
+      - - 690
+        - 740
+      target: FRLRC
+      target_intervals:
+      - - 710
+        - 780
+      parameter: area.1
+      weight: 0.3
+    - type: equal_area
+      source: Red1
+      source_intervals:
+      - - 690
+        - 740
+      target: Chlf1
+      target_intervals:
+      - - 700
+        - 790
+      parameter: area.1
+      weight: 0.06
+    - type: equal_area
+      source: Red1
+      source_intervals:
+      - - 690
+        - 740
+      target: Chlf2
+      target_intervals:
+      - - 730
+        - 821
+      parameter: area.1
+      weight: 0.06
